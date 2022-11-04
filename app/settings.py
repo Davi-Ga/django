@@ -105,17 +105,46 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'app.log',
+            'formatter': 'verbose',
+        },
+
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '{name} {levelname} {asctime:d:m:y} {module} {message}',
+            'style': '{',
+        },
+    },
+}
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': [
-            '172.19.26.240:11211',
-            '172.19.26.242:11212',
-            '172.19.26.244:11213',
-        ]
     }
 }
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
