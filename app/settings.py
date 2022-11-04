@@ -118,15 +118,17 @@ LOGGING = {
             'filename': 'app.log',
             'formatter': 'verbose'
         },
-
-        'console': {
-            'class': 'logging.StreamHandler',
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            
         },
     },
 
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['file','mail_admins'],
             'level': 'DEBUG',
             'propagate': True,
 
