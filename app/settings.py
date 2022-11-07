@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from dotenv import load_dotenv,find_dotenv
 from pathlib import Path
 import os
-env=find_dotenv()
-#env=os.path.join(os.path.dirname(__file__),'.env')
+#env=find_dotenv()
+env=os.path.join(os.path.dirname(__file__),'.env')
 load_dotenv(env)
 
 
@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY= os.environ.get()
+SECRET_KEY= os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -105,7 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+ADMINS = (
+    ('Davi','davigaldinoky@gmail.com')
+)
+SERVER_EMAIL = os.environ.get('SERVER_EMAIL')
 
 LOGGING = {
     'version': 1,
@@ -120,7 +123,6 @@ LOGGING = {
         },
         'mail_admins': {
             'level': 'ERROR',
-            'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler',
         },
         'console': {
