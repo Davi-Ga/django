@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from dotenv import load_dotenv,find_dotenv
 from pathlib import Path
-#import os
+import os
 env=find_dotenv()
 #env=os.path.join(os.path.dirname(__file__),'.env')
 load_dotenv(env)
@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY=
+SECRET_KEY= os.environ.get()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -138,7 +138,7 @@ LOGGING = {
     },
     'formatters': {
         'verbose': {
-            'format': '{name} {levelname} {asctime} {module} {message}',
+            'format': '{levelname} {asctime} {module} {message}',
             'style': '{',
         }
     },
