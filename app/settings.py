@@ -105,9 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ADMINS = (
-    ('Davi','davigaldinoky@gmail.com')
-)
+
 SERVER_EMAIL = os.environ.get('SERVER_EMAIL')
 
 LOGGING = {
